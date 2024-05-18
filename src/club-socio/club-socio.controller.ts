@@ -1,11 +1,13 @@
 /* eslint-disable prettier/prettier */
-import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, HttpCode, Param, Post, Put, UseInterceptors } from '@nestjs/common';
 import { ClubSocioService } from './club-socio.service';
 import { SocioDto } from '../socio/socio.dto';
-import { SocioEntity } from 'src/socio/socio.entity';
+import { SocioEntity } from '../socio/socio.entity';
 import { plainToInstance } from 'class-transformer';
+import { BusinessErrorsInterceptor } from '../shared/interceptors/business-errors/business-errors.interceptor';
 
 @Controller('clubs')
+@UseInterceptors(BusinessErrorsInterceptor)
 export class ClubSocioController {
     constructor(
         private readonly clubSocioService: ClubSocioService
