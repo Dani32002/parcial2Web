@@ -13,5 +13,5 @@ export class SocioDto {
 
     @IsNotEmpty()
     @IsDateString()
-    fecha_nacimiento: Date;
+    fecha_nacimiento: string;
 }

@@ -31,6 +31,9 @@ export class ClubSocioController {
     @Put(':idClub/members')
     async updateMembersFromClub(@Param('idClub') idClub: string, @Body() sociosDto: SocioDto[]) {
         const socios: SocioEntity[] = plainToInstance(SocioEntity, sociosDto);
+        for (let i = 0; i < socios.length; i++) {
+            socios[i].fecha_nacimiento = new Date(socios[i].fecha_nacimiento);
+        }
         return await this.clubSocioService.updateMembersFromClub(idClub, socios);
     }
 

@@ -26,12 +26,14 @@ export class ClubController {
     @Post()
     async create(@Body() clubDto: ClubDto) {
         const club: ClubEntity = plainToInstance(ClubEntity, clubDto);
+        club.fecha_fundacion = new Date(club.fecha_fundacion);
         return await this.clubService.create(club);
     }
 
     @Put(':idClub')
     async update(@Param('idClub') idClub: string, @Body() clubDto: ClubDto) {
         const club: ClubEntity = plainToInstance(ClubEntity, clubDto);
+        club.fecha_fundacion = new Date(club.fecha_fundacion);
         return await this.clubService.update(idClub, club);
     }
 

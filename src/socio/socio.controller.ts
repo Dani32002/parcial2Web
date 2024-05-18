@@ -26,12 +26,14 @@ export class SocioController {
     @Post()
     async create(@Body() socioDto: SocioDto) {
         const socio: SocioEntity = plainToInstance(SocioEntity, socioDto);
+        socio.fecha_nacimiento = new Date(socio.fecha_nacimiento);
         return await this.socioService.create(socio);
     }
 
     @Put(':idSocio')
     async update(@Param('idSocio') idSocio: string, @Body() socioDto: SocioDto) {
         const socio: SocioEntity = plainToInstance(SocioEntity, socioDto);
+        socio.fecha_nacimiento = new Date(socio.fecha_nacimiento);
         return await this.socioService.update(idSocio, socio);
     }
 

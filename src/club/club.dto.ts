@@ -9,7 +9,7 @@ export class ClubDto {
 
     @IsDateString()
     @IsNotEmpty()
-    fecha_fundacion: Date;
+    fecha_fundacion: string;
 
     @IsUrl()
     @IsNotEmpty()
